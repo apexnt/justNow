@@ -11,7 +11,6 @@ fun main() {
     val outputText = masterTransformation(inputNumberOfSeconds)
 }
 
-
 fun masterTransformation(inputNumberOfSeconds: Int) {
     when (inputNumberOfSeconds) {
         in (MINUTE + 1) until HOUR -> {
@@ -26,7 +25,6 @@ fun masterTransformation(inputNumberOfSeconds: Int) {
         }
         else -> {
             val textDay = transformationTextDay(inputNumberOfSeconds)
-
         }
     }
 }
@@ -34,7 +32,8 @@ fun masterTransformation(inputNumberOfSeconds: Int) {
 fun transformationTextMinute(minutes: Int): String {
     return when {
         minutes % 10 == 1 -> "минуту"
-        minutes % 10 == 2 || minutes % 10 == 3 || minutes % 10 == 4 -> "минуты"
+        minutes % 10 == 2 && minutes % 100 != 12 || minutes % 10 == 3 && minutes % 100 != 13
+                || minutes % 10 == 4 && minutes % 100 != 14 -> "минуты"
         else -> {
             "минут"
         }
@@ -44,7 +43,8 @@ fun transformationTextMinute(minutes: Int): String {
 fun transformationTextHour(hours: Int): String {
     return when {
         hours % 10 == 1 -> "час"
-        hours % 10 == 2 && hours % 100 != 12 || hours % 10 == 3 && hours % 100 != 13 || hours % 10 == 4 && hours % 100 != 14 -> "часа"
+        hours % 10 == 2 && hours % 100 != 12 || hours % 10 == 3 && hours % 100 != 13
+                || hours % 10 == 4 && hours % 100 != 14 -> "часа"
         else -> {
             "часов"
         }
@@ -60,7 +60,6 @@ fun transformationTextDay(inputNumberOfSeconds: Int) {
             print("Был(а) только что")
         }
     }
-
 }
 
 
