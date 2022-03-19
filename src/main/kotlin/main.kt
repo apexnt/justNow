@@ -44,7 +44,7 @@ fun transformationTextMinute(minutes: Int): String {
 fun transformationTextHour(hours: Int): String {
     return when {
         hours % 10 == 1 -> "час"
-        hours % 10 == 2 || hours % 10 == 3 || hours % 10 == 4 -> "часа"
+        hours % 10 == 2 && hours % 100 != 12 || hours % 10 == 3 && hours % 100 != 13 || hours % 10 == 4 && hours % 100 != 14 -> "часа"
         else -> {
             "часов"
         }
