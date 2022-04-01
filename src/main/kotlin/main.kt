@@ -9,22 +9,23 @@ fun main() {
     print("Введите количество секунд:")
     val inputNumberOfSeconds = readLine()?.toInt() ?: return
     val outputText = masterTransformation(inputNumberOfSeconds)
+    println(outputText)
 }
 
-fun masterTransformation(inputNumberOfSeconds: Int) {
-    when (inputNumberOfSeconds) {
+fun masterTransformation(inputNumberOfSeconds: Int): String {
+    return when (inputNumberOfSeconds) {
         in (MINUTE + 1) until HOUR -> {
             val minutes = inputNumberOfSeconds / MINUTE
             val textMinute = transformationTextMinute(minutes)
-            print("Был(а) в сети $minutes $textMinute назад.")
+            "Был(а) в сети $minutes $textMinute назад."
         }
         in HOUR until DAY -> {
             val hours = inputNumberOfSeconds / HOUR
             val textHour = transformationTextHour(hours)
-            print("Был(а) в сети $hours $textHour назад.")
+            "Был(а) в сети $hours $textHour назад."
         }
         else -> {
-            val textDay = transformationTextDay(inputNumberOfSeconds)
+            transformationTextDay(inputNumberOfSeconds)
         }
     }
 }
@@ -51,13 +52,13 @@ fun transformationTextHour(hours: Int): String {
     }
 }
 
-fun transformationTextDay(inputNumberOfSeconds: Int) {
+fun transformationTextDay(inputNumberOfSeconds: Int): String {
     return when {
-        inputNumberOfSeconds in DAY..TWO_DAY -> print("Был(а) в сети сегодня")
-        inputNumberOfSeconds in TWO_DAY..THREE_DAY -> print("Был(а) в сети вчера")
-        inputNumberOfSeconds > THREE_DAY -> print("Был(а) в сети давно")
+        inputNumberOfSeconds in DAY..TWO_DAY -> "Был(а) в сети сегодня"
+        inputNumberOfSeconds in TWO_DAY..THREE_DAY -> "Был(а) в сети вчера"
+        inputNumberOfSeconds > THREE_DAY -> "Был(а) в сети давно"
         else -> {
-            print("Был(а) только что")
+            "Был(а) только что"
         }
     }
 }
