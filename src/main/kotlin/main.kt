@@ -8,11 +8,11 @@ fun main() {
     println("Преобразование секунд в строку, описывающую, когда пользователь был в сети")
     print("Введите количество секунд:")
     val inputNumberOfSeconds = readLine()?.toInt() ?: return
-    val outputText = masterTransformation(inputNumberOfSeconds)
+    val outputText = agoToText(inputNumberOfSeconds)
     println(outputText)
 }
 
-fun masterTransformation(inputNumberOfSeconds: Int): String {
+fun agoToText(inputNumberOfSeconds: Int): String {
     return when (inputNumberOfSeconds) {
         in (MINUTE + 1) until HOUR -> {
             val minutes = inputNumberOfSeconds / MINUTE
